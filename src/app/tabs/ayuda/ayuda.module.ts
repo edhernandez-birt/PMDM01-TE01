@@ -7,6 +7,7 @@ import { ayudaPage } from './ayuda.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { ayudaPageRoutingModule } from './ayuda-routing.module';
+import { ComponentesModule } from 'src/app/shared/componentes.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ayudaPageRoutingModule } from './ayuda-routing.module';
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: ayudaPage }]),
     ayudaPageRoutingModule,
+    ComponentesModule
   ],
   declarations: [ayudaPage]
 })

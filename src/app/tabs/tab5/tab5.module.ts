@@ -8,6 +8,7 @@ import { Tab5PageRoutingModule } from './tab5-routing.module';
 
 import { Tab5Page } from './tab5.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
+import { ComponentesModule } from 'src/app/shared/componentes.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ExploreContainerComponentModule } from '../../explore-container/explore
     FormsModule,
     IonicModule,
     Tab5PageRoutingModule,
-    ExploreContainerComponentModule
+    ExploreContainerComponentModule,
+    ComponentesModule
   ],
   declarations: [Tab5Page]
 })
