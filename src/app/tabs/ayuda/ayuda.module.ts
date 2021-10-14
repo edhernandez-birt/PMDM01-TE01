@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ayudaPage } from './ayuda.page';
-import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { ayudaPageRoutingModule } from './ayuda-routing.module';
 import { ComponentesModule } from 'src/app/shared/componentes.module';
@@ -14,7 +13,6 @@ import { ComponentesModule } from 'src/app/shared/componentes.module';
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: ayudaPage }]),
     ayudaPageRoutingModule,
     ComponentesModule
