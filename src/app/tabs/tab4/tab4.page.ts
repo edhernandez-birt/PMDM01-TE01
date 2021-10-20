@@ -7,31 +7,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab4Page implements OnInit {
 
-  numoculto: number = 1;
-  numformulario: number =0;
-  mensaje: string = "¿Vas a acertar rápido?"
-  intentos: number =0;
+  numOculto: number = 0;
+  numFormulario: number = 50; //Por defecto empezamos por 50 que es el más probable para empezar
+  mensaje: string = "Introduce un numero del 0 al 100"  //Mensaje inicial
+  //Variables extra para controlar números de intentos, si se ha acertado y si el número introducido es válido
+  intentos: number = 0;
+  acertado: boolean = false;
+  invalido: boolean = false; //Inicialmente no es invalido
 
   constructor() { }
 
-  compruebaNumero(){
+  //Funcion que comprueba el número que se ha creado aleatoriamente en la carga de la página
+  //con el introducido por el usuario en el formulario web.
+
+  compruebaNumero() {
+    //console.log de prueba
     console.log("Botón clickado");
-    console.log(this.numformulario);
-    console.log(this.numoculto);
-    this.intentos++;
-    if (this.numoculto>this.numformulario){
-      this.mensaje="El número es mayor";
-    }else if (this.numoculto<this.numformulario){
-      this.mensaje="El número es menor";
+    console.log(this.numFormulario);
+    console.log(this.numOculto);
+
+    //Comprobamos que no sea un número del 0 al 100 para dar aviso del error
+    if (this.numFormulario < 0 || this.numFormulario > 100) {
+      this.mensaje = "ERROR"; //Mensaje de error
+      this.invalido = true; //Valor invalido
     } else {
-      this.mensaje="Felicidades. Acertaste en "+this.intentos+" intentos";
+      this.intentos++; //Sumamos un intento cada vez que clickamos comprobar
+      this.invalido = false; //Este numero no es invalido
+      if (this.numOculto > this.numFormulario) {
+        this.mensaje = "El número es mayor";
+      } else if (this.numOculto < this.numFormulario) {
+        this.mensaje = "El número es menor";
+      } else {
+        this.mensaje = "Felicidades. Acertaste en " + this.intentos + " intentos";
+        this.acertado = true;
+      }
     }
   }
 
+  //Función que genera un número aleatorio del 0 al 100 y lo devuelve
+  generaNumero(): number {
+    let numeroRandom: number = Math.round(Math.random() * 100);
+    console.log(numeroRandom);
+    return numeroRandom;
+  }
+
   ngOnInit() {
-    //Generaramos número random al cargar
-    this.numoculto =  Math.round(Math.random() * 100);
-    console.log(this.numoculto);
+    //Llamamos a generar el número oculto durante la carga de la página
+    this.numOculto = this.generaNumero();
   }
 
 }
